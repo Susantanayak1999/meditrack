@@ -9,7 +9,5 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts', './src/setupTests.ts'],
-    pool: 'vmThreads', // <-- The ultimate fix for CI
-    maxWorkers: 1,
   },
 })
