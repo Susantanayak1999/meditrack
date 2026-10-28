@@ -20,12 +20,10 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      # We use install instead of ci because of the legacy peer deps issue
       run: npm install --legacy-peer-deps
       
     - name: Run Tests
-      # --run forces vitest to run once and exit, instead of watch mode
-      run: npx vitest run
+      run: npx vitest run --no-file-parallelism
       
     - name: Build Project
       run: npm run build
