@@ -23,8 +23,7 @@ jobs:
       run: npm install --legacy-peer-deps
       
     - name: Run Tests
-      # We use the DOM environment directly via node to bypass the undici worker bug
-      run: node --experimental-vm-modules node_modules/vitest/vitest.mjs run --environment jsdom
+      run: npx vitest run
       
     - name: Build Project
-      run: npm run build
+      run: npm run build  
