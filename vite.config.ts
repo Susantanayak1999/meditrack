@@ -8,9 +8,8 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
-    pool: 'forks',
+    setupFiles: ['./vitest.setup.ts', './src/setupTests.ts'],
+    pool: 'vmThreads', // <-- The ultimate fix for CI
     maxWorkers: 1,
-    fileParallelism: false,
   },
 })

@@ -23,7 +23,9 @@ jobs:
       run: npm install --legacy-peer-deps
       
     - name: Run Tests
-      run: npx vitest run --no-file-parallelism
+      env:
+        NODE_OPTIONS: "--no-experimental-fetch"
+      run: npx vitest run --pool=vmThreads
       
     - name: Build Project
       run: npm run build
