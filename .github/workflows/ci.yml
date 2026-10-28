@@ -13,17 +13,18 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Use Node.js 18
+    - name: Use Node.js 20
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
         
     - name: Install dependencies
       run: npm install --legacy-peer-deps
       
     - name: Run Tests
-      run: npx vitest run
+      # We use the DOM environment directly via node to bypass the undici worker bug
+      run: node --experimental-vm-modules node_modules/vitest/vitest.mjs run --environment jsdom
       
     - name: Build Project
       run: npm run build
